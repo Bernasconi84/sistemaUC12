@@ -4,27 +4,27 @@
     {
         static void Main(string[] args)
         {
+
+          static void BarraCarregamento(string texto)
+          {
+            
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.BackgroundColor = ConsoleColor.DarkCyan;
-            // Console.WriteLine(@$"
-            // ===============================================
-            // |                                             |
-            // |        Seja bem vindo ao nosso Sistema      |
-            // |            de cadastro de pessoas           |
-            // |              Físicas e Jurídicas            |
-            // ===============================================
-            // ");
-
-
-            Console.Write("iniciando");
-            Thread.Sleep(1000);
-            Console.Write("#");
-
+            Console.Write(texto);
+            Thread.Sleep(500);
+           
             for (var contador = 0; contador < 10; contador++)
             {
-                Thread.Sleep(1000);
-                Console.Write("#");
+                 Console.Write("$");
+                Thread.Sleep(500);
+               
+               
             }
+          }
+
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+           
+
+            BarraCarregamento("Iniciando ");
             Console.Clear();
 
              string opcao;
@@ -40,6 +40,7 @@
           ***********************************************                                             
           *         1 - Pessoa Física                   *
           *         2 - Pessoa Jurídica                 *
+          *                                             *
           *         0 - Sair                            *
           ===============================================
           ");
@@ -48,10 +49,48 @@
             opcao = Console.ReadLine();
             switch (opcao){
               case "1":
+              Endereco endPF = new Endereco();
+              endPF.logradouro = "Rua estrela D'Avila";
+              endPF.numero = 36;
+              endPF.complemento = "Jardim Das Azaleias";
+              endPF.endeCom = false;
+
+              PessoaFisica Guilherme = new PessoaFisica();
+              Guilherme.CPF = "36369363936";
+              Guilherme.dataNasc = new  DateTime(1986, 06, 15);
+              Guilherme.nome = "Guilherme Machado Ruiz";
+
+              System.Console.WriteLine(@$"
+               Nome: {Guilherme.nome}
+               CPF: {Guilherme.CPF}
+               Data de Nascimento: {Guilherme.dataNasc.ToString("dd/MM/yyyy")}
+               Endereço: {endPF.logradouro}, {endPF.numero}"
+               );
               break;
+
                case "2":
+               Endereco endPJ = new Endereco();
+               endPJ.logradouro = "José de Alencar";
+               endPJ.numero = 180;
+               endPJ.complemento = "Centro Empresarial";
+               endPJ.endeCom = true;
+
+               PessoaJuridica pj = new PessoaJuridica();
+               pj.CNPJ = "12345678901";
+               pj.endereco = endPJ;
+               pj.RazaoSocial = "Pessoa Jurídica";
+               pj.nome = "Avon";
+
+               System.Console.WriteLine(pj.CNPJ);
               break;
+
                case "0":
+               Console.WriteLine("Obrigado por utilizar o nosso sistema.");
+               Console.ForegroundColor = ConsoleColor.DarkBlue;
+               BarraCarregamento("Finalizando ");
+               Thread.Sleep(500);
+           
+          
               break;
               default:
               System.Console.WriteLine("Opção inválida, por favor digite uma das opções apresentadas.");
@@ -60,55 +99,6 @@
             }while(opcao != "0");
 
             Console.ResetColor();
-
-
-            // Endereco end = new Endereco();
-            // end.logradouro = "Rua Estrela";
-            // end.numero = 99;
-            // end.complemento = "casa";
-            // end.endeCom = false;  
-
-            // PessoaFisica pf = new PessoaFisica();
-            // pf.endereco = end;
-            // pf.nome = "Bernasconi";
-            // pf.CPF = "36996336936";
-            // pf.dataNasc = new DateTime(1984, 01, 14);
-
-            // System.Console.WriteLine($"{pf.nome} mora na rua:{pf.endereco.logradouro},{pf.endereco.numero}");
-            // System.Console.WriteLine(pf.ValidarDataNasc(pf.dataNasc));
-
-            // bool idadeValida = pf.ValidarDataNasc(pf.dataNasc);
-            // System.Console.WriteLine(idadeValida);
-
-            // if(idadeValida== true){
-            //   System.Console.WriteLine("Cadastro aprovado");
-            // }else{ 
-            //   System.Console.WriteLine("Cadastro reprovado");
-            // }
-
-
-            // PessoaJuridica pj = new PessoaJuridica();
-
-            // Endereco end = new Endereco();
-            // end.logradouro = "Rua Estrela";
-            // end.numero = 99;
-            // end.complemento = "casa";
-            // end.endeCom = false;  
-
-            // pj.endereco = end;
-            // pj.CNPJ = "12345678990001";
-            // pj.RazaoSocial = "Alegria";
-
-            // pj.validarCNPJ(pj.CNPJ);
-
-            // if(pj.validarCNPJ(pj.CNPJ)){
-            //   System.Console.WriteLine("CNPJ válido!");
-            // }else{
-            //   System.Console.WriteLine("CNPJ inválido!");
-            // };
-
-
-
 
 
         }
