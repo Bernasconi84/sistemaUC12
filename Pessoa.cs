@@ -8,13 +8,13 @@ namespace ER2
     public abstract class Pessoa
     {
         //atributos
-        public string nome { get; set; }
+        public string? nome { get; set; }
 
-        public Endereco endereco { get; set; } 
+        public Endereco? endereco { get; set; } 
 
         
         //metodos
-        public abstract void PagarImposto(float rendimento);
+        public abstract float PagarImposto(float rendimento);
         
         
     }

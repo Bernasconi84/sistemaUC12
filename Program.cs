@@ -10,12 +10,12 @@
             
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write(texto);
-            Thread.Sleep(500);
+            Thread.Sleep(100);
            
             for (var contador = 0; contador < 10; contador++)
             {
                  Console.Write("$");
-                Thread.Sleep(500);
+                Thread.Sleep(100);
                
                
             }
@@ -27,7 +27,7 @@
             BarraCarregamento("Iniciando ");
             Console.Clear();
 
-             string opcao;
+             string? opcao;
 
             do{
             Console.WriteLine(@$"
@@ -60,8 +60,11 @@
               Guilherme.dataNasc = new  DateTime(1986, 06, 15);
               Guilherme.nome = "Guilherme Machado Ruiz";
 
+              float impostoAPagar = Guilherme.PagarImposto(10000);
+
               System.Console.WriteLine(@$"
                Nome: {Guilherme.nome}
+               imposto a pagar: {impostoAPagar}
                CPF: {Guilherme.CPF}
                Data de Nascimento: {Guilherme.dataNasc.ToString("dd/MM/yyyy")}
                Endereço: {endPF.logradouro}, {endPF.numero}"
@@ -81,7 +84,15 @@
                pj.RazaoSocial = "Pessoa Jurídica";
                pj.nome = "Avon";
 
-               System.Console.WriteLine(pj.CNPJ);
+               float impostoPJuridica = pj.PagarImposto(10000);
+
+               System.Console.WriteLine(@$"
+               Razão Social: {pj.RazaoSocial}
+               Nome: {pj.nome}
+               CNPJ: {pj.CNPJ}
+               Imposto a pagar: {impostoPJuridica}
+               Rua: {endPJ.logradouro},{endPJ.numero}
+               ");
               break;
 
                case "0":
