@@ -10,6 +10,10 @@ namespace ER2
         public string? CPF { get; set; }
 
         public DateTime dataNasc { get; set; }
+
+        public float salario { get; set; }
+        
+        
         public override float PagarImposto(float salario){ 
             if (salario <= 1500){
                 return 0;

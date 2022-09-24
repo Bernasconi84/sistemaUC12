@@ -4,6 +4,8 @@
     {
         static void Main(string[] args)
         {
+          List<PessoaFisica> listapf = new List<PessoaFisica>();
+
 
           static void BarraCarregamento(string texto)
           {
@@ -38,62 +40,90 @@
           ***********************************************                                             
           *        Escolha uma das opções abaixo        *
           ***********************************************                                             
-          *         1 - Pessoa Física                   *
-          *         2 - Pessoa Jurídica                 *
+          *             Pessoa Física                   *
+          *        1 - Cadastrar Pessoa Física          *
+          *        2 - Listar Pessoa Física             *
+          *        3 - Remover Pessoa Física            *
           *                                             *
-          *         0 - Sair                            *
+          *            Pessoa Jurídica                  *
+          *        1 - Cadastrar Pessoa Jurídica        *
+          *        2 - Listar Pessoa Jurídica           *
+          *        3 - Remover Pessoa Jurídica          *
+          ***********************************************
+          *        0 - Sair                             *
           ===============================================
           ");
 
            
             opcao = Console.ReadLine();
             switch (opcao){
-              case "1":
-              Endereco endPF = new Endereco();
-              endPF.logradouro = "Rua estrela D'Avila";
-              endPF.numero = 36;
-              endPF.complemento = "Jardim Das Azaleias";
-              endPF.endeCom = false;
+               case "1":
+               Endereco endPF = new Endereco();
+               System.Console.WriteLine("Digite seu logradouro");
+               endPF.logradouro = Console.ReadLine();
 
-              PessoaFisica Guilherme = new PessoaFisica();
-              Guilherme.CPF = "36369363936";
-              Guilherme.dataNasc = new  DateTime(1986, 06, 15);
-              Guilherme.nome = "Guilherme Machado Ruiz";
+               System.Console.WriteLine("Digite o número da residência");
+               endPF.numero = int.Parse(Console.ReadLine());
+              
+               System.Console.WriteLine(@$"Digite o complemento (caso exista), senão pressione enter para pular");
+               endPF.complemento = Console.ReadLine();
+               
+               System.Console.WriteLine("Este endereço é comercial? (S/N)");
+                string endeCom = Console.ReadLine().ToUpper();
 
-              float impostoAPagar = Guilherme.PagarImposto(10000);
+                if (endeCom == "S"){
+                  endPF.endeCom = false;
+                }else{
+                  endPF.endeCom = true;
+                }
 
-              System.Console.WriteLine(@$"
-               Nome: {Guilherme.nome}
-               imposto a pagar: {impostoAPagar}
-               CPF: {Guilherme.CPF}
-               Data de Nascimento: {Guilherme.dataNasc.ToString("dd/MM/yyyy")}
-               Endereço: {endPF.logradouro}, {endPF.numero}"
-               );
+               PessoaFisica pf = new PessoaFisica();
+               pf.endereco = endPF;
+
+               System.Console.WriteLine("Digite seu CPF (Somente Números)");
+               pf.CPF = Console.ReadLine();
+               
+               System.Console.WriteLine("Digite seu Nome");
+               pf.nome = Console.ReadLine();
+               
+               System.Console.WriteLine("Digite o valor do seu salário (Somente Números)");
+               pf.salario = float.Parse(Console.ReadLine());
+
+               System.Console.WriteLine("Digite sua data de nascimento [AA, MM, DD]");
+               pf.dataNasc = DateTime.Parse(Console.ReadLine());
+
+               bool idadeValida = pf.ValidarDataNasc(pf.dataNasc);
+
+               if (idadeValida == true){
+                System.Console.WriteLine("Cadastro Aprovado");
+                listapf.Add(pf);
+                System.Console.WriteLine(pf.PagarImposto(pf.salario));
+               }else{
+                System.Console.WriteLine("Cadastro reprovado");
+               }
+
               break;
 
                case "2":
-               Endereco endPJ = new Endereco();
-               endPJ.logradouro = "José de Alencar";
-               endPJ.numero = 180;
-               endPJ.complemento = "Centro Empresarial";
-               endPJ.endeCom = true;
-
-               PessoaJuridica pj = new PessoaJuridica();
-               pj.CNPJ = "12345678901";
-               pj.endereco = endPJ;
-               pj.RazaoSocial = "Pessoa Jurídica";
-               pj.nome = "Avon";
-
-               float impostoPJuridica = pj.PagarImposto(10000);
-
-               System.Console.WriteLine(@$"
-               Razão Social: {pj.RazaoSocial}
-               Nome: {pj.nome}
-               CNPJ: {pj.CNPJ}
-               Imposto a pagar: {impostoPJuridica}
-               Rua: {endPJ.logradouro},{endPJ.numero}
-               ");
+               foreach (var cadaItem in listapf){
+                System.Console.WriteLine($"{cadaItem.nome}, {cadaItem.CPF}");
+               }
+               
               break;
+               
+               case "3":
+               System.Console.WriteLine("Digite o CPF que deseja remover:");
+               string cpfProcuado = Console.ReadLine();
+               PessoaFisica pessoaEncontrada = listapf.Find(cadaItem => cadaItem.CPF == cpfProcuado);
+
+               if (pessoaEncontrada != null){
+                listapf.Remove(pessoaEncontrada);
+                System.Console.WriteLine("CPF removido");
+               }else{
+                System.Console.WriteLine("CPF não encontrado");
+               }
+                
+               break;
 
                case "0":
                Console.WriteLine("Obrigado por utilizar o nosso sistema.");
