@@ -1,0 +1,19 @@
+FICHA CADASTRAL:
+
+
+Pessoa Jurídica
+
+Nome do Proprietário: Oswaldo Loureiro
+Endereço do Proprietário: Avenida: Brigadeiro Antonio Barros da Costa, nº 3345, Bairro Santa Cecília, Cidade: São Paulo, Cep: 05887569
+Endereço Comercial: Rua: Gustavo Emiliano Carneiro Iânes, nº328, Bairro: Morumbi, Cidade: São Paulo, Cep: 05887490
+CNPJ: 69.744.447/0001-71
+Razão Social: OL Transportes LTDA
+
+
+Pessoa Física
+
+Nome do Proprietário: Oswaldo Loureiro
+Endereço do Proprietário: Avenida: Brigadeiro Antonio Barros da Costa, nº 3345, Bairro Santa Cecília, Cidade: São Paulo, Cep: 05887569
+Endereço Comercial: Rua: Gustavo Emiliano Carneiro Iânes, nº328, Bairro: Morumbi, Cidade: São Paulo, Cep: 05887490
+CPF: 669.698.148-90
+Data de Nascimento: 11/02/1974
